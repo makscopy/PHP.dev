@@ -1,0 +1,102 @@
+RewriteEngine On
+RewriteBase /
+
+
+#               Redirect.  Перенаправляю с одной страницы на другую
+# Redirect /index.php /test.php
+
+
+#                RewriteRule  с одной страницы на другую
+# RewriteRule ^index\.php test.php 
+
+#                 RewriteRule  все запросы к папке dir направляю на test.php  (нужно что-то дописать после /dir/)
+# RewriteRule ^dir/ test.php
+
+#                 тест 1 на одну страницу test 2 на другую
+# RewriteRule ^dir1/ test.php
+# RewriteRule ^dir2/ index.php
+
+#            заменяем окончание html на php.
+# RewriteRule (.+)\.html$ $1.php 
+
+#              Выполните редирект всех файлов, заканчивающихся на .php, на страницу index.php. 
+# RewriteRule (.+)\.php$   index.php
+
+#              Выполните редирект всех файлов, заканчивающихся на .html или .php, на страницу index.php.
+#    RewriteRule (.+)\.php$  index.php
+#   RewriteRule (.+)\.html$  index.php
+
+#           Выполните редирект всех файлов, заканчивающихся на .html на такие же файлы, но с расширением .php.
+# RewriteRule (.+)\.html$  $1.php
+
+# Выполните редирект страницы index1.php на страницу 1.php, страницы index2.php на страницу 2.php,
+# страницы index3.php на страницу 3.php. Решите задачу с помощью одной директивы RedirectMatch.
+
+#             Все запросы с окончанием .php переводить на index.php
+#RewriteCond %{REQUEST_URI} \.php$
+# RewriteRule .+ index.php
+
+#             Все запросы которые НЕ ОКАНЧИВАЮТСЯ на .php переводить на index.php
+# RewriteCond %{REQUEST_URI} !\.php$
+# RewriteRule .+ index.php
+
+#                       Все начинающиеся с dir  на index.php
+#RewriteCond %{REQUEST_URI} ^/dir/
+# RewriteRule .+ index.php
+
+#                       Выполните редирект всех файлов, имеющих
+#          расширение .html и адрес которых начинается с /content/, на index.php.
+#RewriteCond %{REQUEST_URI} \.html$
+#RewriteCond %{REQUEST_URI} ^/content/
+# RewriteRule .+ index.php
+
+
+#   Использование флага OR
+
+#           Если заканчивается на php или на html
+#            RewriteCond %{REQUEST_URI} \.html$ [OR]
+#RewriteCond %{REQUEST_URI} \.php$
+# RewriteRule .+ index.php
+
+#       Работа с флагами -f, -d, -s в директиве RewriteCond в htaccess
+
+#           Выполните редирект всех запросов, являющихся существующими файлами,
+#              на index.php.
+#RewriteCond %{REQUEST_URI} -f
+# RewriteRule .+ index.php
+
+#           Выполните редирект всех запросов, являющихся НЕ существующими файлами,
+#           на index.php.
+#RewriteCond %{REQUEST_URI} !-f
+# RewriteRule .+ index.php
+
+#           Выполните редирект всех запросов,
+#           являющихся существующими папками, на index.php.
+#RewriteCond %{REQUEST_URI} -d
+# RewriteRule .+ index.php
+
+#             Выполните редирект всех запросов, являющихся существующими 
+#              файлами и имеющим расширение .html, на index.php.
+#RewriteCond %{REQUEST_FILENAME} -f 
+#RewriteCond %{REQUEST_FILENAME} \.html$
+ #RewriteRule .+ index.php
+
+#             L - говорит о том что это последняя директива
+#              (директивы ниже не будут выполняться)
+ #    RewriteRule (.+)\.php$  index.php [L]
+
+#      Выполните редирект всех запросов на свой сайт, положив запрошенный адрес
+#         в карман и передав GET-параметром, на страницу index.php.
+# RewriteCond %{REQUEST_URI} ^/webgrows(.+)$
+# RewriteRule (.+) index.php?get=$1
+
+
+#  чтобы заставить игнорировать регистр нужно поставить флаг [NC]
+# RewriteCond %{REQUEST_URI} ^/webgrows(.+)$ [NC]  (WeBgRoWs тоже будет переводить)
+
+#           Свой файл ошибок 404 с помощью htaccess
+# ErrorDocument 404 /404.php
+
+
+#        Закрытие от прямого доступа. htaccess запретит доступ ко всем файлам в папке 
+# deny from all
