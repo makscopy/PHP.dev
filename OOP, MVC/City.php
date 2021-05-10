@@ -43,5 +43,6 @@ foreach ($citys as $city) {
 
 echo 'изменения';
 echo 'изменения';
+echo 'изменения';
 
  
