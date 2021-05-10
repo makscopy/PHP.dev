@@ -475,5 +475,3 @@ echo $employee1->salary + $employee2->salary;
 // Сделано 
 
 
-Echo 'данные';
-echo '  sss';
