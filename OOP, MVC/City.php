@@ -41,4 +41,7 @@ foreach ($citys as $city) {
   echo  $city->name .' - '. $city->population. '<br>';
 }
 
+echo 'изменения';
+echo 'изменения';
+
  
