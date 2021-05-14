@@ -462,3 +462,5 @@ public $salary;
 }
 
 $emloyee = new Employee('Лёша', 34, '1994-6-25');
+
+// Bpvtytybz
