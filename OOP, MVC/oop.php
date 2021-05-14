@@ -475,4 +475,4 @@ echo $employee1->salary + $employee2->salary;
 // Сделано 
 
 
-echo 'Хочу залить!'
+echo 'Хочу залить!';
